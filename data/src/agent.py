@@ -69,7 +69,18 @@ async def main():
                 tools=strava_tools,
                 callback_handler=None
             )
-            prompt = 'Summarize the last four weeks of my Strava activities.'
+            prompt = dedent(f"""
+                Summarize the last six weeks of my Strava activities.
+                1/ If needed, pull multiple pages of activities to ensure that you have enough data to capture all the activities of the requested time period.
+                2/ When calculating the weekly summary, start on the Monday and conclude on the Sunday. Each week should be a contiguous set of days and should not run into the next week. Specifically, the last day of the week should be a Sunday, not the following Monday.
+                3/ Start with the oldest week and work your way to the current week.
+                4/ Include only the requested number of weeks in the weekly summaries.
+                5/ Include the total number of activities, total distance run, total time in active running, and average heart rate per run.
+                6/ Include summaries of each run in the weekly summaries.
+                7/ Exclude any activities that are not running.
+                [IMPORTANT] Days should not overlap between weeks to prevent double counting.
+                """
+            )
             result = agent.stream_async(prompt)
             async for chunk in result:
                 if 'data' in chunk:

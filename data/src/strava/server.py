@@ -132,7 +132,7 @@ def create_mcp_server(host: str, port: int) -> FastMCP:
             return {"error": str(e)}
 
     @mcp.tool()
-    @observe()
+    @observe(capture_input=False)
     def summarize_activities(
         activities: List[Dict[str, Any]],
         include_weekly: bool = True
@@ -156,7 +156,9 @@ def create_mcp_server(host: str, port: int) -> FastMCP:
         """
         try:
             analyzer = StravaAnalyzer()
+            logger.info(f"Summarizing {len(activities)} activities")
             summary = analyzer.get_activities_summary(activities, include_weekly)
+            logger.info(f"Summary: {summary}")
             return summary
         except Exception as e:
             return {"error": str(e)}
