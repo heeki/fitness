@@ -1,0 +1,32 @@
+# langfuse configuration
+LANGFUSE_HOST=https://us.cloud.langfuse.com
+LANGFUSE_PUBLIC_KEY=your-langfuse-public-key
+LANGFUSE_SECRET_KEY=your-langfuse-secret-key
+export LANGFUSE_HOST
+export LANGFUSE_PUBLIC_KEY
+export LANGFUSE_SECRET_KEY
+
+# strava configuration
+DEBUG=false
+export STRAVA_DEBUG=${DEBUG}
+export STRAVA_STATELESS_HTTP=true
+STRAVA_URL_OAUTH_ENDPOINT=https://www.strava.com/oauth
+STRAVA_URL_OAUTH_AUTHORIZE=${STRAVA_URL_OAUTH_ENDPOINT}/authorize
+STRAVA_URL_OAUTH_TOKEN=${STRAVA_URL_OAUTH_ENDPOINT}/token
+export STRAVA_URL_AUTHORIZE=${STRAVA_URL_OAUTH_AUTHORIZE}
+export STRAVA_URL_TOKEN=${STRAVA_URL_OAUTH_TOKEN}
+
+STRAVA_CLIENT_ID=your-strava-client-id
+STRAVA_CLIENT_SECRET=your-strava-client-secret
+STRAVA_AUTH_CODE=your-temporary-strava-auth-code
+STRAVA_REFRESH_TOKEN=your-strava-refresh-token
+STRAVA_ACCESS_TOKEN=your-temporary-strava-access-token
+export STRAVA_CLIENT_ID
+export STRAVA_CLIENT_SECRET
+export STRAVA_ACCESS_TOKEN
+
+# mcp configuration
+MCP_HOST=0.0.0.0
+MCP_PORT=8000
+export STRAVA_HOST=${MCP_HOST}
+export STRAVA_PORT=${MCP_PORT}

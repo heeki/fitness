@@ -19,7 +19,14 @@ strava.streamable-http:
 strava.fastapi:
 	uv run mcp/strava/server.py --transport fastapi
 
-meteo:
+meteo.stdio:
+	uv run mcp/weather/server.py --transport stdio
+meteo.streamable-http:
+	uv run mcp/weather/server.py --transport streamable-http
+meteo.fastapi:
+	uv run mcp/weather/server.py --transport fastapi
+meteo.test:
 	uv run mcp/weather/meteo.py
+
 agent:
 	uv run agents/activity/agent.py
